@@ -1,3 +1,17 @@
+#Let's download the genome even though we are executing with no parameters
+
+mkdir -p res/genome
+
+existeGenome=$(find 'res/genome/' -maxdepth 1 -name 'ecoli.fasta.gz' | wc -l );
+echo "$existeGenome";
+
+if [ "$existeGenome" -eq 1 ]
+	 then  echo "Genome has already been downladed, we don´t need to download it again";
+else
+	wget -O 'res/genome/ecoli.fasta.gz' 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz' ;
+fi
+
+
 if [ "$#" -ne 1 ]
 then
     echo "Usage: $0 <sampleid>"
