@@ -19,7 +19,7 @@ then
 fi
 
 sampleid=$1
-
+echo "$sampleid";
 echo "Running FastQC..."
 mkdir -p out/fastqc
 fastqc -o out/fastqc data/${sampleid}_?.fastq.gz
